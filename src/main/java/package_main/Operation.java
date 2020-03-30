@@ -1,3 +1,4 @@
+package package_main;
 public enum Operation {
 
   // Double bien plus précis qu'un float
