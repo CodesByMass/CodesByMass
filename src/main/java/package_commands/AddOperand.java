@@ -4,6 +4,14 @@ import package_exceptions.MaxIntervalException;
 import package_exceptions.MinIntervalException;
 import package_main.MoteurRPN;
 
+/**
+ * Commande qui permet d'ajouter un opérande à la liste des opérandes.
+ *
+ * @see MoteurRPN#addOperand(double)
+ *
+ * @author Mass'
+ *
+ */
 public class AddOperand implements Command {
 
   private MoteurRPN moteur;
@@ -14,6 +22,11 @@ public class AddOperand implements Command {
     this.op = op;
   }
 
+  /**
+   * Implémente la méthode execute.
+   *
+   *
+   */
   @Override
   public void execute() {
     try {

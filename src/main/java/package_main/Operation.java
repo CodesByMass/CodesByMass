@@ -1,7 +1,14 @@
 package package_main;
+
+/**
+ * Types d'opÃ©rations possibles
+ *
+ * @author Mass'
+ *
+ */
 public enum Operation {
 
-  // Double bien plus précis qu'un float
+  // Double bien plus prï¿½cis qu'un float
   PLUS('+') {
     @Override
     public double eval(double operand_a, double operand_b) {

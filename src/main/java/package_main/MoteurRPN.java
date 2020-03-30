@@ -6,6 +6,14 @@ import package_exceptions.MaxIntervalException;
 import package_exceptions.MinIntervalException;
 import package_exceptions.MissingOperandException;
 
+/**
+ * Hérite d'interpreteur et permet de faire diverses commandes.
+ *
+ * <
+ *
+ * @author Mass'
+ *
+ */
 public class MoteurRPN extends Interpreteur {
 
   public final double MAX_VALUE = 2000000;
@@ -16,17 +24,29 @@ public class MoteurRPN extends Interpreteur {
     super();
   }
 
-  // get de la pile
+  /**
+   *
+   * @return la pile d'opérandes
+   */
   public Stack<Double> get_stack() {
     return this.numbers_stack;
   }
 
-  // get historique
+  /**
+   *
+   * @return historique des deux derniers éléments retirés de la pile
+   */
   public Stack<Double> get_log() {
     return this.log_numbers;
   }
 
-  // Ajouter l'opérande à la pile
+  /**
+   * Ajoute un opérande à la pile.
+   *
+   * @param operand le nombre saisi
+   * @throws MinIntervalException valeur maximale autorisée
+   * @throws MaxIntervalException valeur minimale autorisée
+   */
   public void addOperand(double operand) throws MinIntervalException, MaxIntervalException {
     if (operand < MIN_VALUE) {
       throw new MinIntervalException(MIN_VALUE, MAX_VALUE);
@@ -37,7 +57,14 @@ public class MoteurRPN extends Interpreteur {
 
   }
 
-  // Calculer suite à la saisie d'un opérateur
+  /**
+   * Fait une opération sur deux opérandes.
+   *
+   * @param op l'opérateur saisi.
+   * @throws MissingOperandException quand il manque au moins un opérateur dans la pile.
+   * @throws MinIntervalException valeur maximale autorisée dépassée.
+   * @throws MaxIntervalException valeur minimal autorisée dépassée.
+   */
   public void compute(Operation op)
       throws MissingOperandException, MinIntervalException, MaxIntervalException {
     double operandA = MIN_VALUE;
@@ -65,7 +92,11 @@ public class MoteurRPN extends Interpreteur {
 
   }
 
-  // Lecture de la pile
+  /**
+   * Affiche la liste des opérateurs.
+   *
+   * @return la liste des opérandes de la pile
+   */
   public String getOperands() {
     String operands = "La pile contient \n ";
     for (double operand : this.numbers_stack) {
