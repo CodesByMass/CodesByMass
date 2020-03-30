@@ -25,4 +25,9 @@ public class InterpreteurTest {
 
   }
 
+  @Test
+  public void testUndo() {
+    //
+  }
+
 }

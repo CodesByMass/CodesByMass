@@ -5,12 +5,13 @@ import package_main.Interpreteur;
 
 public class Undo implements Command {
 
-  Interpreteur interpreteur;
+  private final Interpreteur interpreteur;
 
   public Undo(Interpreteur interpreteur) {
     this.interpreteur = interpreteur;
   }
 
+  @Override
   public void execute() {
     try {
       interpreteur.undo();

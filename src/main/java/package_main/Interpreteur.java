@@ -26,7 +26,7 @@ public class Interpreteur {
    * this.commands.get(str).execute(); } }
    */
   public void quit() {
-    System.out.println("Vous avez quitté le programme");
+    System.out.println("Vous avez quittÃ© le programme");
     System.exit(0);
   }
 
