@@ -4,7 +4,7 @@ import static org.junit.Assert.assertFalse;
 import java.util.Stack;
 import org.junit.Before;
 import org.junit.Test;
-import package_main.Interpreteur;
+import com.principal.Interpreteur;
 
 public class InterpreteurTest {
 

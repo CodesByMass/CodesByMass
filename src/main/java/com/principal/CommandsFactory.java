@@ -1,7 +1,8 @@
-package package_main;
+package com.principal;
 
 import java.util.HashMap;
-import package_commands.Command;
+import com.commands.Command;
+
 
 /**
  * Fait office d'Invoker, appelle les commandes qu'il faut.
@@ -12,12 +13,12 @@ import package_commands.Command;
 public class CommandsFactory {
 
   // Dernière commande
-  public static String last_Command;
+  static String last_Command;
   // Map des commandes
   private final HashMap<String, Command> commandMap = new HashMap<String, Command>();
 
   /**
-   * Ajoute une commande à la liste des commandes actuelles
+   * Ajoute une commande à la liste des commandes actuelles.
    *
    * @param cmdName nom de la commande
    * @param command type de commande
@@ -27,7 +28,7 @@ public class CommandsFactory {
   }
 
   /**
-   * Execute la commande
+   * Execute la commande.
    *
    * @param cmdName nom de la commande, permet de rechercher si la commande existe dans la liste.
    */

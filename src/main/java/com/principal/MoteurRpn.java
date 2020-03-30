@@ -1,43 +1,43 @@
-package package_main;
+package com.principal;
 
 import java.util.EmptyStackException;
 import java.util.Stack;
-import package_exceptions.MaxIntervalException;
-import package_exceptions.MinIntervalException;
-import package_exceptions.MissingOperandException;
+import com.exceptions.MaxIntervalException;
+import com.exceptions.MinIntervalException;
+import com.exceptions.MissingOperandException;
 
 /**
  * Hérite d'interpreteur et permet de faire diverses commandes.
  *
- * <
- *
  * @author Mass'
  *
  */
-public class MoteurRPN extends Interpreteur {
+public class MoteurRpn extends Interpreteur {
 
-  public final double MAX_VALUE = 2000000;
-  public final double MIN_VALUE = 0;
+  public static final double MAX_VALUE = 2000000;
+  public static final double MIN_VALUE = 0;
 
   // Création de la pile
-  public MoteurRPN() {
+  public MoteurRpn() {
     super();
   }
 
   /**
+   * Retourne la pile des opérandes.
    *
    * @return la pile d'opérandes
    */
   public Stack<Double> get_stack() {
-    return this.numbers_stack;
+    return this.numbersStack;
   }
 
   /**
+   * Retourne l'historique des opérandes.
    *
    * @return historique des deux derniers éléments retirés de la pile
    */
   public Stack<Double> get_log() {
-    return this.log_numbers;
+    return this.logNumbers;
   }
 
   /**
@@ -53,7 +53,7 @@ public class MoteurRPN extends Interpreteur {
     } else if (operand > MAX_VALUE) {
       throw new MaxIntervalException(MIN_VALUE, MAX_VALUE);
     }
-    numbers_stack.push(operand);
+    numbersStack.push(operand);
 
   }
 
@@ -69,26 +69,29 @@ public class MoteurRPN extends Interpreteur {
       throws MissingOperandException, MinIntervalException, MaxIntervalException {
     double operandA = MIN_VALUE;
     double operandB = MIN_VALUE;
-    if (numbers_stack.size() >= 2) {
+    if (numbersStack.size() >= 2) {
       try {
-        operandA = numbers_stack.pop();
-        operandB = numbers_stack.pop();
-        this.log_numbers.add(operandA);
-        this.log_numbers.add(operandB);
+        operandA = numbersStack.pop();
+        operandB = numbersStack.pop();
+        this.logNumbers.add(operandA);
+        this.logNumbers.add(operandB);
         System.out.println("l'operation effectuée est :(" + operandB + "" + op.getOperation() + ""
             + operandA + ") = " + op.eval(operandA, operandB));
         this.addOperand(op.eval(operandB, operandA));
       } catch (ArithmeticException | MinIntervalException | MaxIntervalException e) {
         System.out.println("Exception: " + e.getMessage());
-        if (operandA != Double.MIN_VALUE)
+        if (operandA != 0) {
           this.addOperand(operandB);
-        if (operandB != Double.MIN_VALUE)
+        }
+        if (operandB != 0) {
           this.addOperand(operandA);
+        }
       } catch (EmptyStackException e) {
         System.out.println("Exception: " + e.getMessage());
       }
-    } else
+    } else {
       throw new MissingOperandException();
+    }
 
   }
 
@@ -99,7 +102,7 @@ public class MoteurRPN extends Interpreteur {
    */
   public String getOperands() {
     String operands = "La pile contient \n ";
-    for (double operand : this.numbers_stack) {
+    for (double operand : this.numbersStack) {
       operands += operand + " ";
     }
     return operands;

@@ -1,4 +1,4 @@
-package package_commands;
+package com.commands;
 
 /**
  * Interface Commande.

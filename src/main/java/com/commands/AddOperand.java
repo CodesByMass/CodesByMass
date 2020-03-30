@@ -1,23 +1,23 @@
-package package_commands;
+package com.commands;
 
-import package_exceptions.MaxIntervalException;
-import package_exceptions.MinIntervalException;
-import package_main.MoteurRPN;
+import com.exceptions.MaxIntervalException;
+import com.exceptions.MinIntervalException;
+import com.principal.MoteurRpn;
 
 /**
  * Commande qui permet d'ajouter un opérande à la liste des opérandes.
  *
- * @see MoteurRPN#addOperand(double)
+ * @see MoteurRpn#addOperand(double)
  *
  * @author Mass'
  *
  */
 public class AddOperand implements Command {
 
-  private MoteurRPN moteur;
+  private MoteurRpn moteur;
   private double op;
 
-  public AddOperand(MoteurRPN moteur, double op) {
+  public AddOperand(MoteurRpn moteur, double op) {
     this.moteur = moteur;
     this.op = op;
   }

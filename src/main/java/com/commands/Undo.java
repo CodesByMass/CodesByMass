@@ -1,7 +1,7 @@
-package package_commands;
+package com.commands;
 
-import package_exceptions.MissingOperandException;
-import package_main.Interpreteur;
+import com.exceptions.MissingOperandException;
+import com.principal.Interpreteur;
 
 /**
  * Commande qui permet de quitter l'application.
@@ -14,22 +14,23 @@ import package_main.Interpreteur;
 public class Undo implements Command {
 
   private final Interpreteur interpreteur;
-  private String last_command;
+  private String lastCommand;
 
   /**
+   * Constructeur.
    *
    * @param interpreteur c'est le moteurRPN
-   * @param last_command la dernière commande saisie
+   * @param lastCommand la dernière commande saisie
    */
-  public Undo(Interpreteur interpreteur, String last_command) {
+  public Undo(Interpreteur interpreteur, String lastCommand) {
     this.interpreteur = interpreteur;
-    this.last_command = last_command;
+    this.lastCommand = lastCommand;
   }
 
   @Override
   public void execute() {
     try {
-      interpreteur.undo(last_command);
+      interpreteur.undo(lastCommand);
     } catch (MissingOperandException e) {
       e.printStackTrace();
     }

@@ -1,37 +1,38 @@
-package package_commands;
+package com.commands;
 
-import package_exceptions.MaxIntervalException;
-import package_exceptions.MinIntervalException;
-import package_exceptions.MissingOperandException;
-import package_main.MoteurRPN;
-import package_main.Operation;
+import com.exceptions.MaxIntervalException;
+import com.exceptions.MinIntervalException;
+import com.exceptions.MissingOperandException;
+import com.principal.MoteurRpn;
+import com.principal.Operation;
 
 /**
  * Commande qui permet de faire une opération sur deux opérandes.
  *
- * @see MoteurRPN#compute(Operation)
+ * @see MoteurRpn#compute(Operation)
  *
  * @author Mass'
  *
  */
 public class Computer implements Command {
 
-  private MoteurRPN moteur;
+  private MoteurRpn moteur;
   private Operation op;
 
   /**
+   * Instancie la commande.
    *
    * @param moteur envoie l'instance du moteurRPN
    * @param operation envoie l'operateur saisi
    * @see Operation
    */
-  public Computer(MoteurRPN moteur, Operation operation) {
+  public Computer(MoteurRpn moteur, Operation operation) {
     this.moteur = moteur;
     this.op = operation;
   }
 
   /**
-   * Implémente la méthode execute
+   * Implémente la méthode execute.
    */
   @Override
   public void execute() {

@@ -1,6 +1,6 @@
-package package_main;
+package com.principal;
 
-import package_exceptions.MissingOperandException;
+import com.exceptions.MissingOperandException;
 
 /**
  * Programme principal qui lance l'application.
@@ -8,25 +8,25 @@ import package_exceptions.MissingOperandException;
  * @author Mass'
  *
  */
-public enum CalculatriceRPN {
+public enum CalculatriceRpn {
 
-  CALCULATRICE(new SaisieRPN());
+  CALCULATRICE(new SaisieRpn());
 
-  private SaisieRPN inputRPN;
+  private SaisieRpn inputRpn;
 
-  CalculatriceRPN(SaisieRPN input) {
+  CalculatriceRpn(SaisieRpn input) {
     System.out.println(" Bienvenue sur la Reverse Polish Notation Calculatrice ");
-    inputRPN = input;
+    inputRpn = input;
   }
 
   public void launch() throws MissingOperandException {
 
-    inputRPN.userInteraction();
+    inputRpn.userInteraction();
   }
 
   public static void main(String[] args) throws MissingOperandException {
 
-    CalculatriceRPN.CALCULATRICE.launch();
+    CalculatriceRpn.CALCULATRICE.launch();
   }
 
 }

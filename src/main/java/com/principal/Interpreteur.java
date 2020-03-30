@@ -1,10 +1,11 @@
-package package_main;
+package com.principal;
 
 import java.util.Stack;
-import package_exceptions.MissingOperandException;
+import com.exceptions.MissingOperandException;
+
 
 /**
- * Gert les deux commandes Undo et Quit
+ * Gert les deux commandes Undo et Quit.
  *
  * @see #quit()
  * @see #quit()
@@ -15,20 +16,20 @@ import package_exceptions.MissingOperandException;
 public class Interpreteur {
 
   // Pile des opérandes
-  protected Stack<Double> numbers_stack;
+  protected Stack<Double> numbersStack;
   // Historique des deux derniers opérandes retirés lors d'une opération
-  protected Stack<Double> log_numbers;
+  protected Stack<Double> logNumbers;
 
 
   public Interpreteur() {
-    this.numbers_stack = new Stack<Double>();
-    this.log_numbers = new Stack<Double>();
+    this.numbersStack = new Stack<Double>();
+    this.logNumbers = new Stack<Double>();
   }
 
 
-  public Interpreteur(Stack<Double> numbers_stack, Stack<Double> log_numbers) {
-    this.numbers_stack = numbers_stack;
-    this.log_numbers = log_numbers;
+  public Interpreteur(Stack<Double> numbersStack, Stack<Double> logNumbers) {
+    this.numbersStack = numbersStack;
+    this.logNumbers = logNumbers;
 
   }
 
@@ -43,26 +44,26 @@ public class Interpreteur {
 
   /**
    * Annule la dernière commande saisie.
-   * 
+   *
    * @param cf Dernière commande saisie par l'utilisateur
    * @throws MissingOperandException Si aucun opérande n'est dans la pile
    */
   public void undo(String cf) throws MissingOperandException {
-    if (cf == ("AddOperand")) {
+    if (cf.equals("AddOperand")) {
 
-      if (!(numbers_stack.isEmpty())) {
-        numbers_stack.pop();
+      if (!(numbersStack.isEmpty())) {
+        numbersStack.pop();
       } else {
         throw new MissingOperandException();
       }
-    } else if (cf == ("Computer")) {
-      double op1 = this.log_numbers.pop();
-      double op2 = this.log_numbers.pop();
-      this.numbers_stack.pop();
+    } else if (cf.equals("Computer")) {
+      double op1 = this.logNumbers.pop();
+      double op2 = this.logNumbers.pop();
+      this.numbersStack.pop();
       // Une pile est une LIFO, on a donc récupéré en dernier l'élément le plus ancien de la pile de
       // base
-      this.numbers_stack.add(op2);
-      this.numbers_stack.add(op1);
+      this.numbersStack.add(op2);
+      this.numbersStack.add(op1);
     }
   }
 

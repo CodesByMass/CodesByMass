@@ -1,6 +1,6 @@
-package package_commands;
+package com.commands;
 
-import package_main.Interpreteur;
+import com.principal.Interpreteur;
 
 /**
  * Commande qui permet de quitter l'application.

@@ -1,33 +1,34 @@
-package package_commands;
+package com.commands;
 
-import package_main.MoteurRPN;
+import com.principal.MoteurRpn;
 
 /**
  * Commande qui permet d'afficher la liste des opérandes.
  *
- * @see MoteurRPN#getOperands()
+ * @see MoteurRpn#getOperands()
  *
  * @author Mass'
  *
  */
 public class ListOperands implements Command {
 
-  private MoteurRPN moteur;
+  private MoteurRpn moteur;
 
   /**
+   * Constructeur.
    *
    * @param moteur envoie l'instance du moteurRPN
    */
-  public ListOperands(MoteurRPN moteur) {
+  public ListOperands(MoteurRpn moteur) {
     this.moteur = moteur;
   }
 
   /**
-   * Implémente la méthode execute
+   * Implémente la méthode execute.
    */
   @Override
   public void execute() {
-    this.moteur.getOperands();
+    System.out.println(this.moteur.getOperands());
   }
 
 }

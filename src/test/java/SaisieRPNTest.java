@@ -1,7 +1,7 @@
 import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.Test;
-import package_main.SaisieRPN;
+import com.principal.SaisieRpn;
 
 public class SaisieRPNTest {
 
@@ -11,7 +11,7 @@ public class SaisieRPNTest {
 
   @Test
   public void testInput() {
-    SaisieRPN inputRPN = new SaisieRPN();
+    SaisieRpn inputRPN = new SaisieRpn();
     assertNotNull(inputRPN);
   }
 

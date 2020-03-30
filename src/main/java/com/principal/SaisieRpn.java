@@ -1,28 +1,28 @@
-package package_main;
+package com.principal;
 
 import java.util.Scanner;
-import package_commands.AddOperand;
-import package_commands.Computer;
-import package_commands.ListOperands;
-import package_commands.Quit;
-import package_commands.Undo;
-import package_exceptions.MissingOperandException;
+import com.commands.AddOperand;
+import com.commands.Computer;
+import com.commands.ListOperands;
+import com.commands.Quit;
+import com.commands.Undo;
+import com.exceptions.MissingOperandException;
 
 /**
- * Gère les interactions avec l'utilisateur et invoque le moteurRPN
+ * Gère les interactions avec l'utilisateur et invoque le moteurRPN.
  *
- * @see MoteurRPN
+ * @see MoteurRpn
  *
  * @author Mass'
  *
  */
-public class SaisieRPN {
+public class SaisieRpn {
 
-  MoteurRPN moteurRPN;
+  MoteurRpn moteurRpn;
   CommandsFactory cf;
 
-  public SaisieRPN() {
-    moteurRPN = new MoteurRPN();
+  public SaisieRpn() {
+    moteurRpn = new MoteurRpn();
     cf = new CommandsFactory();
   }
 
@@ -34,58 +34,58 @@ public class SaisieRPN {
    * @throws MissingOperandException Si il manque un operand pour une opération.
    */
   public void userInteraction() throws MissingOperandException {
-    Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in, "UTF-8");
     System.out
         .println(" Veuillez entrez un Opérande | exit pour quitter | restart pour vider la pile ");
     String input = sc.nextLine();
-    double new_operand;
+    double newOperand;
 
     while (!input.equals("exit")) {
       try {
         switch (input) {
           case "quit": {
-            cf.addCommand("quitter", new Quit(moteurRPN));
+            cf.addCommand("quitter", new Quit(moteurRpn));
             cf.execute("quitter");
             break;
           }
           case "undo": {
-            cf.addCommand("undo", new Undo(moteurRPN, CommandsFactory.last_Command));
+            cf.addCommand("undo", new Undo(moteurRpn, CommandsFactory.last_Command));
             cf.execute("undo");
             break;
           }
           case "+": {
-            cf.addCommand("Computer", new Computer(moteurRPN, Operation.PLUS));
+            cf.addCommand("Computer", new Computer(moteurRpn, Operation.PLUS));
             cf.execute("Computer");
             break;
           }
           case "-": {
-            cf.addCommand("Computer", new Computer(moteurRPN, Operation.MOINS));
+            cf.addCommand("Computer", new Computer(moteurRpn, Operation.MOINS));
             cf.execute("Computer");
             break;
           }
           case "*": {
-            cf.addCommand("Computer", new Computer(moteurRPN, Operation.MULT));
+            cf.addCommand("Computer", new Computer(moteurRpn, Operation.MULT));
             cf.execute("Computer");
             break;
           }
           case "/": {
-            cf.addCommand("Computer", new Computer(moteurRPN, Operation.DIV));
+            cf.addCommand("Computer", new Computer(moteurRpn, Operation.DIV));
             cf.execute("Computer");
             break;
           }
           case "%": {
-            cf.addCommand("Computer", new Computer(moteurRPN, Operation.MOD));
+            cf.addCommand("Computer", new Computer(moteurRpn, Operation.MOD));
             cf.execute("Computer");
             break;
           }
           case "restart": {
-            moteurRPN.get_stack().clear();
+            moteurRpn.get_stack().clear();
             System.out.println(" La pile est vidée ");
             break;
           }
           default: {
-            new_operand = new Double(input);
-            cf.addCommand("addOperand", new AddOperand(moteurRPN, new_operand));
+            newOperand = new Double(input);
+            cf.addCommand("addOperand", new AddOperand(moteurRpn, newOperand));
             cf.execute("addOperand");
             break;
           }
@@ -96,7 +96,7 @@ public class SaisieRPN {
       }
 
       finally {
-        cf.addCommand("getOperands", new ListOperands(moteurRPN));
+        cf.addCommand("getOperands", new ListOperands(moteurRpn));
         cf.execute("getOperands");
         input = sc.nextLine();
       }
